@@ -1,4 +1,4 @@
-unit MainUnit;
+п»їunit MainUnit;
 
 interface
 
@@ -86,13 +86,13 @@ implementation
 
 procedure TMainForm.AfterProcessStopActions;
 begin
-  bStartStop.Caption := 'Начать преобразование';
+  bStartStop.Caption := 'РќР°С‡Р°С‚СЊ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ';
   pBar.Visible := false;
 end;
 
 procedure TMainForm.BeforeProcessStartActions;
 begin
-  bStartStop.Caption := 'Прервать операцию';
+  bStartStop.Caption := 'РџСЂРµСЂРІР°С‚СЊ РѕРїРµСЂР°С†РёСЋ';
   pBar.Position := 0;
   pBar.Visible := true;
 end;
@@ -124,7 +124,7 @@ begin
       errors := ValidateProcessParams(processParams);
       if (errors.Count > 0) then
         begin
-          ShowMessage('Обнаружены следующие ошибки: ' + StringReplace(#13#10 + trim(errors.Text), #13#10, #13#10'- ', [rfReplaceAll]) + #13#10'Операция отменена!');
+          ShowMessage('РћР±РЅР°СЂСѓР¶РµРЅС‹ СЃР»РµРґСѓСЋС‰РёРµ РѕС€РёР±РєРё: ' + StringReplace(#13#10 + trim(errors.Text), #13#10, #13#10'- ', [rfReplaceAll]) + #13#10'РћРїРµСЂР°С†РёСЏ РѕС‚РјРµРЅРµРЅР°!');
           errors.Free;
           exit;
         end;
@@ -236,12 +236,12 @@ begin
   AfterProcessStopActions;
 
   if not processStatistic.terminated then
-    ShowMessage('Готово!')
+    ShowMessage('Р“РѕС‚РѕРІРѕ!')
   else
     begin
-      msg := 'Операция отменена!';
+      msg := 'РћРїРµСЂР°С†РёСЏ РѕС‚РјРµРЅРµРЅР°!';
       if (processStatistic.exceptionMessage <> '') then
-        msg := 'Ошибка: ' + processStatistic.exceptionMessage + #13#10 + msg;
+        msg := 'РћС€РёР±РєР°: ' + processStatistic.exceptionMessage + #13#10 + msg;
 
       ShowMessage(msg);
     end;
@@ -251,8 +251,8 @@ procedure TMainForm.RefreshStatistics;
 begin
   pBar.Max := processStatistic.stepsCount;
   pBar.Position := processStatistic.stepNum;
-  lInfRowNum.Caption := IntToStr(processStatistic.stepNum) + ' из ' +IntToStr(processStatistic.stepsCount);
-  lInfOPS.Caption := FormatFloat('0.00', processStatistic.ops) + ' строк\сек.';
+  lInfRowNum.Caption := IntToStr(processStatistic.stepNum) + ' РёР· ' +IntToStr(processStatistic.stepsCount);
+  lInfOPS.Caption := FormatFloat('0.00', processStatistic.ops) + ' СЃС‚СЂРѕРє\СЃРµРє.';
   lInfPassed.Caption := FormatSecondsToString(processStatistic.timePassedInSeconds);
   lInfRemain.Caption := FormatSecondsToString(processStatistic.timeRemainInSeconds);
 end;

@@ -1,4 +1,4 @@
-unit ProcessDurationUnit;
+п»їunit ProcessDurationUnit;
 
 interface
 
@@ -9,7 +9,7 @@ type
 
   { TProcessDuration }
 
-  // Класс для подсчета статистики по операции
+  // РљР»Р°СЃСЃ РґР»СЏ РїРѕРґСЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕ РѕРїРµСЂР°С†РёРё
   TProcessDuration = class(TObject)
   private
     startTimestamp: TDateTime;
@@ -27,26 +27,26 @@ implementation
 
 { TProcessDuration }
 
-// Засекает время начала операции
+// Р—Р°СЃРµРєР°РµС‚ РІСЂРµРјСЏ РЅР°С‡Р°Р»Р° РѕРїРµСЂР°С†РёРё
 procedure TProcessDuration.start();
 begin
   startTimestamp := now;
 end;
 
-// Чистит время начала операции и количество пройденных шагов в ней
+// Р§РёСЃС‚РёС‚ РІСЂРµРјСЏ РЅР°С‡Р°Р»Р° РѕРїРµСЂР°С†РёРё Рё РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕР№РґРµРЅРЅС‹С… С€Р°РіРѕРІ РІ РЅРµР№
 procedure TProcessDuration.stop();
 begin
   startTimestamp := 0;
   stepsCount := 0;
 end;
 
-// Добавляет один пройденный шаг операции
+// Р”РѕР±Р°РІР»СЏРµС‚ РѕРґРёРЅ РїСЂРѕР№РґРµРЅРЅС‹Р№ С€Р°Рі РѕРїРµСЂР°С†РёРё
 procedure TProcessDuration.addStep();
 begin
   Inc(stepsCount);
 end;
 
-// Возвращает среднее количество шагов оперции в секунду
+// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃСЂРµРґРЅРµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ С€Р°РіРѕРІ РѕРїРµСЂС†РёРё РІ СЃРµРєСѓРЅРґСѓ
 function TProcessDuration.getOPS(): real;
 var passedTimeInSeconds: Int64;
 begin
@@ -57,7 +57,7 @@ begin
   else Result := stepsCount / passedTimeInSeconds;
 end;
 
-// Возвращает оставшееся время в секундах
+// Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕСЃС‚Р°РІС€РµРµСЃСЏ РІСЂРµРјСЏ РІ СЃРµРєСѓРЅРґР°С…
 function TProcessDuration.getRemainingTime(const stepCountRemain: integer): Int64;
 begin
   if stepCountRemain < 0 then
@@ -65,7 +65,7 @@ begin
   else Result := round(getOPS * stepCountRemain);
 end;
 
-// Возвращает количество секунд с начала операции
+// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРµРєСѓРЅРґ СЃ РЅР°С‡Р°Р»Р° РѕРїРµСЂР°С†РёРё
 function TProcessDuration.getPassedTime(): Int64;
 begin
   Result := SecondsBetween(startTimestamp, now);

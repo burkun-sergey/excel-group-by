@@ -1,4 +1,4 @@
-unit ProcessParamsValidatorUnit;
+п»їunit ProcessParamsValidatorUnit;
 
 interface
 
@@ -13,28 +13,28 @@ begin
   Result := TStringList.Create;
 
   if not FileExists(params.srcFilename) then
-    Result.Add('Исходный файл не найден');
+    Result.Add('РСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ');
 
   if not DirectoryExists(ExtractFilePath(params.newFilename)) then
-    Result.Add('Папка для создания результирующего файла не существует');
+    Result.Add('РџР°РїРєР° РґР»СЏ СЃРѕР·РґР°РЅРёСЏ СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РµРіРѕ С„Р°Р№Р»Р° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚');
 
   if params.srcSheetNum <= 0 then
-    Result.Add('Неверно указан номер листа с данными');
+    Result.Add('РќРµРІРµСЂРЅРѕ СѓРєР°Р·Р°РЅ РЅРѕРјРµСЂ Р»РёСЃС‚Р° СЃ РґР°РЅРЅС‹РјРё');
 
   if (params.srcRangeType = pprtCustom) and (trim(params.srcRangeAddress) = '') then
-    Result.Add('Не указан адрес области');
+    Result.Add('РќРµ СѓРєР°Р·Р°РЅ Р°РґСЂРµСЃ РѕР±Р»Р°СЃС‚Рё');
 
   if params.srcRangeStartFromRowNum <= 0 then
-    Result.Add('Неверно указано начало строки в области данных');
+    Result.Add('РќРµРІРµСЂРЅРѕ СѓРєР°Р·Р°РЅРѕ РЅР°С‡Р°Р»Рѕ СЃС‚СЂРѕРєРё РІ РѕР±Р»Р°СЃС‚Рё РґР°РЅРЅС‹С…');
 
   if params.srcRangeColumnId <= 0 then
-    Result.Add('Неверно указан номер колонки идентификатора в области данных');
+    Result.Add('РќРµРІРµСЂРЅРѕ СѓРєР°Р·Р°РЅ РЅРѕРјРµСЂ РєРѕР»РѕРЅРєРё РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР° РІ РѕР±Р»Р°СЃС‚Рё РґР°РЅРЅС‹С…');
 
   if params.srcRangeColumnBarcode <= 0 then
-    Result.Add('Неверно указан номер колонки штрихкода в области данных');
+    Result.Add('РќРµРІРµСЂРЅРѕ СѓРєР°Р·Р°РЅ РЅРѕРјРµСЂ РєРѕР»РѕРЅРєРё С€С‚СЂРёС…РєРѕРґР° РІ РѕР±Р»Р°СЃС‚Рё РґР°РЅРЅС‹С…');
 
   if (params.srcRangeColumnId > 0) and (params.srcRangeColumnBarcode > 0) and (params.srcRangeColumnId = params.srcRangeColumnBarcode) then
-    Result.Add('Колонка и штрихкода и идентификатора не должны совпадать');
+    Result.Add('РљРѕР»РѕРЅРєР° Рё С€С‚СЂРёС…РєРѕРґР° Рё РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР° РЅРµ РґРѕР»Р¶РЅС‹ СЃРѕРІРїР°РґР°С‚СЊ');
 end;
 
 end.

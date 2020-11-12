@@ -1,4 +1,4 @@
-unit ProcessParamsUnit;
+п»їunit ProcessParamsUnit;
 
 interface
 
@@ -6,7 +6,7 @@ uses ProcessDurationUnit;
 
 type
 
-  // Статистика по операции
+  // РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РѕРїРµСЂР°С†РёРё
   OperationInfRecord = record
     ops: real;
     stepNum,
@@ -21,7 +21,7 @@ type
 
   ProcessParamRangeType = (pprtCustom, pprtAuto);
 
-  // Параметры для операции
+  // РџР°СЂР°РјРµС‚СЂС‹ РґР»СЏ РѕРїРµСЂР°С†РёРё
   ProcessParamsRecord = record
     srcFilename,
     newFilename: string;
